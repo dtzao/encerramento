@@ -498,6 +498,15 @@
             flex-wrap: wrap;
         }
 
+
+        footer .signature {
+            margin-top: 10px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 1.5px;
+            color: var(--gold);
+            opacity: 0.85;
+        }
         footer .ops span {
             font-family: 'Orbitron', sans-serif;
             font-size: 0.75rem;
@@ -565,6 +574,7 @@
                 <span>OP IMPACTO</span>
             </div>
             <div>POLÍCIA MILITAR DO ESTADO DE SÃO PAULO — COPOM</div>
+            <div class="signature">SD PM ANDERSON SILVA 154.466-7</div>
         </footer>
     </div>
 
@@ -739,6 +749,9 @@
         }
 
         function startEdit(id) {
+            if (!confirm('Deseja EDITAR esta frase?')) {
+                return;
+            }
             editingId = id;
             renderCustom();
         }
@@ -767,6 +780,9 @@
         }
 
         function deletePhrase(id) {
+            if (!confirm('Tem certeza que deseja EXCLUIR esta frase?\n\nEsta ação não poderá ser desfeita.')) {
+                return;
+            }
             customPhrases = customPhrases.filter(p => p.id !== id);
             saveCustom(customPhrases);
             if (editingId === id) editingId = null;
